@@ -1,5 +1,5 @@
 class Person {
-  name: string;
+  name: string; // Here we can have types and values, if i define a type as name: "Victor" | "Monique", only yhis values will be acceptable.
   age: number;
 
   constructor (name: string, age: number) {
@@ -34,6 +34,7 @@ personsss[2] = { name: "Collin" };
 
 type Entity = {
   id: number;
+  paradigma: "oo" | "functional"
 }
 
 type testMerge = Person & Entity;
@@ -41,4 +42,23 @@ type testMerge = Person & Entity;
 const person3: testMerge[] = [];
 
 person3[0] = { name: "Daniel Lucas", age: 4 }; // Becasuse of the merge between Person and Entity, this guy needs an id to accomplish the type.
-person3[1] = { name: "Daniel El", age: 1, id: 3 };
+person3[2] = { name: "Telefel El", age: 2, id: 5, paradigma: "test" };
+person3[1] = { name: "Daniel El", age: 1, id: 3, paradigma: "oo" };
+
+
+interface IEntity {
+  id: number;
+}
+
+interface IPerson extends IEntity{
+  name: string;
+  age: number;
+  paradigm: string; 
+}
+
+
+const person4: IPerson[] = [];
+
+person4[0] = { name: "Daniel Lucas", age: 4 };
+person4[2] = { name: "Telefel El", age: 2, id: 5, paradigm: "test" };
+person4[1] = { name: "Daniel El", age: 1, id: 3, paradigm: "oo" };
