@@ -58,7 +58,37 @@ interface IPerson extends IEntity{
 
 
 const person4: IPerson[] = [];
-
+// @ts-nocheck
 person4[0] = { name: "Daniel Lucas", age: 4 };
 person4[2] = { name: "Telefel El", age: 2, id: 5, paradigm: "test" };
 person4[1] = { name: "Daniel El", age: 1, id: 3, paradigm: "oo" };
+
+// function 
+
+// function go (steps: number, callback: (param: string) => void ) {
+//   let i = 0;
+//   while (i < steps) {
+//     callback(`${i}`);
+//     i++;
+//   }
+// }
+
+// go(10, function (param: string) {
+//   console.log(param);
+// });
+
+// -> complex
+function go (steps: number, callback: (i: number) => () => number ) {
+  let i = 0;
+  while (i < steps) {
+    const fn = callback(i);
+    console.log(fn());
+    i++;
+  }
+}
+
+go(10, function (i: number) {
+  return function () {
+    return 100;
+  }
+});
